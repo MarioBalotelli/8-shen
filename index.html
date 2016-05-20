@@ -13,147 +13,410 @@
     <section class="page-header">
       <h1 class="project-name">Baba-s-blog</h1>
       <h2 class="project-tagline">巴神的博客</h2>
-      <a href="https://github.com/MarioBalotelli/Baba-s-Blog" class="btn">View on GitHub</a>
-      <a href="https://github.com/MarioBalotelli/Baba-s-Blog/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/MarioBalotelli/Baba-s-Blog/tarball/master" class="btn">Download .tar.gz</a>
+      <a href="https://github.com/MarioBalotelli/8-shen" class="btn">View on GitHub</a>
+      <a href="https://github.com/MarioBalotelli/8-shen/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/MarioBalotelli/8-shen/tarball/master" class="btn">Download .tar.gz</a>
     </section>
 
     <section class="main-content">
-      <p>//参考答案
-    //类式继承
-    function ParentClass() {
-        this.Pname = "ParentClass";
-    }
-    ParentClass.prototype = {
-        getPName: function () {
-            return this.Pname;
-        }
-    };
-    function ChildClass() {
-        this.Cname = "ChildClass";
-    }
-    ChildClass.prototype = new ParentClass();
-    ChildClass.prototype.constructor = ChildClass;
-    ChildClass.prototype.getCName = function () {
-        return this.Cname;
-    };
-    console.log(new ChildClass());
-    //构造函数继承
-    function Parent() {
-        this.Pname = "Parent";
-        this.id = 1;
-    }
-    Parent.prototype = {
-        getPName: function () {
-            return this.Pname;
-        }
-    };
-    function Child() {
-        Parent.call(this);
-        this.Cname = "Child";
-    }
-    console.log(new Child());
-    //原型式继承
-    function P(obj) {
-        function F() { }
-        F.prototype = obj;
-        return new F();
-    }
-    //测试
-    var object = {
-        a: 1,
-        b: 2
-    };
-    console.log(P(object));
-    //寄生式继承
-    var obj = {
-        name: "obj",
-        id: 1
-    };
-    function createObj(obj) {
-        var o = new P(obj);
-        o.getName = function () {
-            return name;
-        };
-        return o;
-    }
-    console.log(createObj(obj));
-    //总结一下前面的继承方式
-    function inherit(parent, child) {
-        var p = P(parent);//调用前面原型式继承
-        p.constructor = parent;
-        child.prototype = p;
-    }
-    //测试
-    //父
-    function Par() {
-        this.par = "Par";
-    }
-    Par.prototype = {
-        fn1: function () {
-        },
-        fn2: function () {
-        }
-    };
-    //子
-    function Chi() {
-        this.chi = "Chi";
-    }
-    inherit(Par, Chi);
-    console.log(Chi);
-    //多继承
-    //我们先来简单实现一个类似jquery的extend的方法
-    var extend = function () {
-        var args = arguments, target = args[0] || {}, k = 0, l = args.length;
-        while (++k &lt;= l) {
-            var arg = args[k];
-            for (var prop in arg) {
-                target[prop] = arg[prop];
-            }
-        }
-        return target;
-    };
-    //下面定义几个类
-    function A() {
-        this.aName = "A";
-    }
-    A.prototype = {
-        getAName: function () {
-            return this.aName;
-        }
-    };
-    function B() {
-        this.bName = "B";
-    }
-    B.prototype = {
-        getBName: function () {
-            return this.bName;
-        }
-    };
-    function C() {
-        this.aName = "C";
-    }
-    C.prototype = {
-        getCName: function () {
-            return this.cName;
-        }
-    };
-    //我们让D来继承A、B、C
-    function D() {
-        A.call(this);
-        B.call(this);
-        C.call(this);
-        this.aName = "D";
-    }
-    D.prototype = extend(C.prototype, B.prototype, A.prototype, {
-        getDName: function () {
-            return this.dName;
-        }
-    });
-    console.log(new D());</p>
+      <h1>
+<a id="参考答案" class="anchor" href="#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//参考答案</h1>
+
+<h1>
+<a id="类式继承" class="anchor" href="#%E7%B1%BB%E5%BC%8F%E7%BB%A7%E6%89%BF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//类式继承</h1>
+
+<h1>
+<a id="function-parentclass-" class="anchor" href="#function-parentclass-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function ParentClass() {</h1>
+
+<h1>
+<a id="thispname--parentclass" class="anchor" href="#thispname--parentclass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.Pname = "ParentClass";</h1>
+
+<h1>
+<a id="" class="anchor" href="#" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="parentclassprototype--" class="anchor" href="#parentclassprototype--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ParentClass.prototype = {</h1>
+
+<h1>
+<a id="getpname-function--" class="anchor" href="#getpname-function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>getPName: function () {</h1>
+
+<h1>
+<a id="return-thispname" class="anchor" href="#return-thispname" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return this.Pname;</h1>
+
+<h1>
+<a id="-1" class="anchor" href="#-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="-2" class="anchor" href="#-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="function-childclass-" class="anchor" href="#function-childclass-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function ChildClass() {</h1>
+
+<h1>
+<a id="thiscname--childclass" class="anchor" href="#thiscname--childclass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.Cname = "ChildClass";</h1>
+
+<h1>
+<a id="-3" class="anchor" href="#-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="childclassprototype--new-parentclass" class="anchor" href="#childclassprototype--new-parentclass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ChildClass.prototype = new ParentClass();</h1>
+
+<h1>
+<a id="childclassprototypeconstructor--childclass" class="anchor" href="#childclassprototypeconstructor--childclass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ChildClass.prototype.constructor = ChildClass;</h1>
+
+<h1>
+<a id="childclassprototypegetcname--function--" class="anchor" href="#childclassprototypegetcname--function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ChildClass.prototype.getCName = function () {</h1>
+
+<h1>
+<a id="return-thiscname" class="anchor" href="#return-thiscname" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return this.Cname;</h1>
+
+<h1>
+<a id="-4" class="anchor" href="#-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="consolelognew-childclass" class="anchor" href="#consolelognew-childclass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>console.log(new ChildClass());</h1>
+
+<h1>
+<a id="构造函数继承" class="anchor" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%A7%E6%89%BF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//构造函数继承</h1>
+
+<h1>
+<a id="function-parent-" class="anchor" href="#function-parent-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function Parent() {</h1>
+
+<h1>
+<a id="thispname--parent" class="anchor" href="#thispname--parent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.Pname = "Parent";</h1>
+
+<h1>
+<a id="thisid--1" class="anchor" href="#thisid--1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.id = 1;</h1>
+
+<h1>
+<a id="-5" class="anchor" href="#-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="parentprototype--" class="anchor" href="#parentprototype--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parent.prototype = {</h1>
+
+<h1>
+<a id="getpname-function---1" class="anchor" href="#getpname-function---1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>getPName: function () {</h1>
+
+<h1>
+<a id="return-thispname-1" class="anchor" href="#return-thispname-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return this.Pname;</h1>
+
+<h1>
+<a id="-6" class="anchor" href="#-6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}``</h1>
+
+<h1>
+<a id="-7" class="anchor" href="#-7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="function-child-" class="anchor" href="#function-child-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function Child() {</h1>
+
+<h1>
+<a id="parentcallthis" class="anchor" href="#parentcallthis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parent.call(this);</h1>
+
+<h1>
+<a id="thiscname--child" class="anchor" href="#thiscname--child" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.Cname = "Child";</h1>
+
+<h1>
+<a id="-8" class="anchor" href="#-8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="consolelognew-child" class="anchor" href="#consolelognew-child" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>console.log(new Child());</h1>
+
+<h1>
+<a id="原型式继承" class="anchor" href="#%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//原型式继承</h1>
+
+<h1>
+<a id="function-pobj-" class="anchor" href="#function-pobj-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function P(obj) {</h1>
+
+<h1>
+<a id="function-f--" class="anchor" href="#function-f--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function F() { }</h1>
+
+<h1>
+<a id="fprototype--obj" class="anchor" href="#fprototype--obj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>F.prototype = obj;</h1>
+
+<h1>
+<a id="return-new-f" class="anchor" href="#return-new-f" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return new F();</h1>
+
+<h1>
+<a id="-9" class="anchor" href="#-9" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="测试" class="anchor" href="#%E6%B5%8B%E8%AF%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//测试</h1>
+
+<h1>
+<a id="var-object--" class="anchor" href="#var-object--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>var object = {</h1>
+
+<h1>
+<a id="a-1" class="anchor" href="#a-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>a: 1,</h1>
+
+<h1>
+<a id="b-2" class="anchor" href="#b-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>b: 2</h1>
+
+<h1>
+<a id="-10" class="anchor" href="#-10" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="consolelogpobject" class="anchor" href="#consolelogpobject" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>console.log(P(object));</h1>
+
+<h1>
+<a id="寄生式继承" class="anchor" href="#%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//寄生式继承</h1>
+
+<h1>
+<a id="var-obj--" class="anchor" href="#var-obj--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>var obj = {</h1>
+
+<h1>
+<a id="name-obj" class="anchor" href="#name-obj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>name: "obj",</h1>
+
+<h1>
+<a id="id-1" class="anchor" href="#id-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>id: 1</h1>
+
+<h1>
+<a id="-11" class="anchor" href="#-11" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="function-createobjobj-" class="anchor" href="#function-createobjobj-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function createObj(obj) {</h1>
+
+<h1>
+<a id="var-o--new-pobj" class="anchor" href="#var-o--new-pobj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>var o = new P(obj);</h1>
+
+<h1>
+<a id="ogetname--function--" class="anchor" href="#ogetname--function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>o.getName = function () {</h1>
+
+<h1>
+<a id="return-name" class="anchor" href="#return-name" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return name;</h1>
+
+<h1>
+<a id="-12" class="anchor" href="#-12" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="return-o" class="anchor" href="#return-o" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return o;</h1>
+
+<h1>
+<a id="-13" class="anchor" href="#-13" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="consolelogcreateobjobj" class="anchor" href="#consolelogcreateobjobj" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>console.log(createObj(obj));</h1>
+
+<h1>
+<a id="总结一下前面的继承方式" class="anchor" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B%E5%89%8D%E9%9D%A2%E7%9A%84%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//总结一下前面的继承方式</h1>
+
+<h1>
+<a id="function-inheritparent-child-" class="anchor" href="#function-inheritparent-child-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function inherit(parent, child) {</h1>
+
+<h1>
+<a id="var-p--pparent调用前面原型式继承" class="anchor" href="#var-p--pparent%E8%B0%83%E7%94%A8%E5%89%8D%E9%9D%A2%E5%8E%9F%E5%9E%8B%E5%BC%8F%E7%BB%A7%E6%89%BF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>var p = P(parent);//调用前面原型式继承</h1>
+
+<h1>
+<a id="pconstructor--parent" class="anchor" href="#pconstructor--parent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>p.constructor = parent;</h1>
+
+<h1>
+<a id="childprototype--p" class="anchor" href="#childprototype--p" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>child.prototype = p;</h1>
+
+<h1>
+<a id="-14" class="anchor" href="#-14" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="测试-1" class="anchor" href="#%E6%B5%8B%E8%AF%95-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//测试</h1>
+
+<h1>
+<a id="父" class="anchor" href="#%E7%88%B6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//父</h1>
+
+<h1>
+<a id="function-par-" class="anchor" href="#function-par-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function Par() {</h1>
+
+<h1>
+<a id="thispar--par" class="anchor" href="#thispar--par" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.par = "Par";</h1>
+
+<h1>
+<a id="-15" class="anchor" href="#-15" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="parprototype--" class="anchor" href="#parprototype--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Par.prototype = {</h1>
+
+<h1>
+<a id="fn1-function--" class="anchor" href="#fn1-function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>fn1: function () {</h1>
+
+<h1>
+<a id="-16" class="anchor" href="#-16" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>},</h1>
+
+<h1>
+<a id="fn2-function--" class="anchor" href="#fn2-function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>fn2: function () {</h1>
+
+<h1>
+<a id="-17" class="anchor" href="#-17" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="-18" class="anchor" href="#-18" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="子" class="anchor" href="#%E5%AD%90" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//子</h1>
+
+<h1>
+<a id="function-chi-" class="anchor" href="#function-chi-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function Chi() {</h1>
+
+<h1>
+<a id="thischi--chi" class="anchor" href="#thischi--chi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.chi = "Chi";</h1>
+
+<h1>
+<a id="-19" class="anchor" href="#-19" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="inheritpar-chi" class="anchor" href="#inheritpar-chi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>inherit(Par, Chi);</h1>
+
+<h1>
+<a id="consolelogchi" class="anchor" href="#consolelogchi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>console.log(Chi);</h1>
+
+<h1>
+<a id="多继承" class="anchor" href="#%E5%A4%9A%E7%BB%A7%E6%89%BF" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//多继承</h1>
+
+<h1>
+<a id="我们先来简单实现一个类似jquery的extend的方法" class="anchor" href="#%E6%88%91%E4%BB%AC%E5%85%88%E6%9D%A5%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%B1%BB%E4%BC%BCjquery%E7%9A%84extend%E7%9A%84%E6%96%B9%E6%B3%95" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//我们先来简单实现一个类似jquery的extend的方法</h1>
+
+<h1>
+<a id="var-extend--function--" class="anchor" href="#var-extend--function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>var extend = function () {</h1>
+
+<h1>
+<a id="var-args--arguments-target--args0---k--0-l--argslength" class="anchor" href="#var-args--arguments-target--args0---k--0-l--argslength" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>var args = arguments, target = args[0] || {}, k = 0, l = args.length;</h1>
+
+<h1>
+<a id="while-k--l-" class="anchor" href="#while-k--l-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>while (++k &lt;= l) {</h1>
+
+<h1>
+<a id="var-arg--argsk" class="anchor" href="#var-arg--argsk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>var arg = args[k];</h1>
+
+<h1>
+<a id="for-var-prop-in-arg-" class="anchor" href="#for-var-prop-in-arg-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>for (var prop in arg) {</h1>
+
+<h1>
+<a id="targetprop--argprop" class="anchor" href="#targetprop--argprop" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>target[prop] = arg[prop];</h1>
+
+<h1>
+<a id="-20" class="anchor" href="#-20" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="-21" class="anchor" href="#-21" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="return-target" class="anchor" href="#return-target" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return target;</h1>
+
+<h1>
+<a id="-22" class="anchor" href="#-22" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="下面定义几个类" class="anchor" href="#%E4%B8%8B%E9%9D%A2%E5%AE%9A%E4%B9%89%E5%87%A0%E4%B8%AA%E7%B1%BB" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//下面定义几个类</h1>
+
+<h1>
+<a id="function-a-" class="anchor" href="#function-a-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function A() {</h1>
+
+<h1>
+<a id="thisaname--a" class="anchor" href="#thisaname--a" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.aName = "A";</h1>
+
+<h1>
+<a id="-23" class="anchor" href="#-23" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="aprototype--" class="anchor" href="#aprototype--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A.prototype = {</h1>
+
+<h1>
+<a id="getaname-function--" class="anchor" href="#getaname-function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>getAName: function () {</h1>
+
+<h1>
+<a id="return-thisaname" class="anchor" href="#return-thisaname" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return this.aName;</h1>
+
+<h1>
+<a id="-24" class="anchor" href="#-24" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="-25" class="anchor" href="#-25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="function-b-" class="anchor" href="#function-b-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function B() {</h1>
+
+<h1>
+<a id="thisbname--b" class="anchor" href="#thisbname--b" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.bName = "B";</h1>
+
+<h1>
+<a id="-26" class="anchor" href="#-26" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="bprototype--" class="anchor" href="#bprototype--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>B.prototype = {</h1>
+
+<h1>
+<a id="getbname-function--" class="anchor" href="#getbname-function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>getBName: function () {</h1>
+
+<h1>
+<a id="return-thisbname" class="anchor" href="#return-thisbname" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return this.bName;</h1>
+
+<h1>
+<a id="-27" class="anchor" href="#-27" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="-28" class="anchor" href="#-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="function-c-" class="anchor" href="#function-c-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function C() {</h1>
+
+<h1>
+<a id="thisaname--c" class="anchor" href="#thisaname--c" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.aName = "C";</h1>
+
+<h1>
+<a id="-29" class="anchor" href="#-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="cprototype--" class="anchor" href="#cprototype--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C.prototype = {</h1>
+
+<h1>
+<a id="getcname-function--" class="anchor" href="#getcname-function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>getCName: function () {</h1>
+
+<h1>
+<a id="return-thiscname-1" class="anchor" href="#return-thiscname-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return this.cName;</h1>
+
+<h1>
+<a id="-30" class="anchor" href="#-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="-31" class="anchor" href="#-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>};</h1>
+
+<h1>
+<a id="我们让d来继承abc" class="anchor" href="#%E6%88%91%E4%BB%AC%E8%AE%A9d%E6%9D%A5%E7%BB%A7%E6%89%BFabc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>//我们让D来继承A、B、C</h1>
+
+<h1>
+<a id="function-d-" class="anchor" href="#function-d-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>function D() {</h1>
+
+<h1>
+<a id="acallthis" class="anchor" href="#acallthis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A.call(this);</h1>
+
+<h1>
+<a id="bcallthis" class="anchor" href="#bcallthis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>B.call(this);</h1>
+
+<h1>
+<a id="ccallthis" class="anchor" href="#ccallthis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C.call(this);</h1>
+
+<h1>
+<a id="thisaname--d" class="anchor" href="#thisaname--d" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>this.aName = "D";</h1>
+
+<h1>
+<a id="-32" class="anchor" href="#-32" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="dprototype--extendcprototype-bprototype-aprototype-" class="anchor" href="#dprototype--extendcprototype-bprototype-aprototype-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>D.prototype = extend(C.prototype, B.prototype, A.prototype, {</h1>
+
+<h1>
+<a id="getdname-function--" class="anchor" href="#getdname-function--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>getDName: function () {</h1>
+
+<h1>
+<a id="return-thisdname" class="anchor" href="#return-thisdname" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>return this.dName;</h1>
+
+<h1>
+<a id="-33" class="anchor" href="#-33" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>}</h1>
+
+<h1>
+<a id="-34" class="anchor" href="#-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>});</h1>
+
+<h1>
+<a id="consolelognew-d" class="anchor" href="#consolelognew-d" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>console.log(new D());</h1>
 
       <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/MarioBalotelli/Baba-s-Blog">Baba-s-blog</a> is maintained by <a href="https://github.com/MarioBalotelli">MarioBalotelli</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/MarioBalotelli/8-shen">Baba-s-blog</a> is maintained by <a href="https://github.com/MarioBalotelli">MarioBalotelli</a>.</span>
 
         <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
